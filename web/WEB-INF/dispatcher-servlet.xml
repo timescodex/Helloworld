@@ -24,7 +24,10 @@
                  <prop key="add.do">addController</prop>
                  <prop key="delete.do">deleteController</prop>
                  <prop key="update.do">updateController</prop>
-                 <prop key="search.do">searchController</prop>
+                 <prop key="show.do">showController</prop>
+                 <prop key="save.do">saveController</prop>
+                 <prop key="updatesave.do">updateSaveController</prop>
+                 <prop key="search.do">SearchController</prop>
         </props>
     </property>
     </bean>
@@ -33,7 +36,10 @@
     <bean id="addController" class="com.mvc.controller.AddController" />
     <bean id="deleteController" class="com.mvc.controller.DeleteController" />
     <bean id="updateController" class="com.mvc.controller.UpdateController" />
-    <bean id="searchController" class="com.mvc.controller.SearchController" />
+    <bean id="showController" class="com.mvc.controller.showController" />
+    <bean id="saveController" class="com.mvc.controller.saveController"/>
+    <bean id="updateSaveController" class="com.mvc.controller.updateSaveController"/>
+    <bean id="SearchController" class="com.mvc.controller.SearchController"/>
     
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"

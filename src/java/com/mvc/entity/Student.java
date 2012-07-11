@@ -3,17 +3,17 @@ package com.mvc.entity;
 
 public class Student{
 
-	private Integer id;
+	private String id;
 
 	private String user;
 
 	private String psw;
 	
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 	
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
