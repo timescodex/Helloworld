@@ -7,7 +7,7 @@ import com.mvc.entity.Student;
 
 import java.sql.*;   
 import java.util.*;
-
+import org.apache.log4j.Logger; 
 
 class ConnectParam {
 	private String driver; //db driver
@@ -89,7 +89,6 @@ public class StudentService {
 		}
 		catch(Exception ex)
 		{
-			System.out.print("can not connect to db");
 			return null;
 		}
 	}
@@ -98,23 +97,17 @@ public class StudentService {
 	
 	public void save(Student st)
 	{
-                System.out.println("run here!");
-                System.out.println(st.getId());
 		String sql = "insert into student values("+"'"+st.getId()+"'"+","+"'"+st.getUser()+"'"+","+"'"+st.getPsw()+"'"+");";
-                //System.out.println(sql);
-		StudentService sv = new StudentService();	
-                //System.out.println("run here!");
-	        sv.execute(sql);
+	        execute(sql);
 	
 	}
 	
 	public void update(Student st)
 	{
 		String sql = "update student set name="+"'"+st.getUser()+"'"+",psw="+"'"+st.getPsw()+"'"+" where id="+"'"+st.getId()+"'"+";";
-		System.out.println(sql);
-                StudentService sv = new StudentService();
+              
 		try{
-			sv.execute(sql);
+			execute(sql);
 		}
 		catch(Exception ex)
 		{
@@ -125,10 +118,8 @@ public class StudentService {
 	public void delete(Student st)
 	{
 		String sql = "delete from student where id="+st.getId()+";";
-                System.out.println(sql);
-		StudentService sv = new StudentService();
 		try{
-			sv.execute(sql);
+			execute(sql);
 		}
 		catch(Exception ex)
 		{
@@ -140,13 +131,13 @@ public class StudentService {
 	{
 		try
 		{
-			StudentService sv = new StudentService();
-			ConnectParam CP = sv.setCP();
-			Connection conn = sv.DBconn(CP);
+			ConnectParam CP = setCP();
+			Connection conn = DBconn(CP);
 			// statement用来执行SQL语句
 			Statement statement = conn.createStatement();
 			// 执行SQL语句
 			ResultSet rs = statement.executeQuery(sql);
+                        // conn.close();
 			return rs;
 		}
 		catch(Exception ex)
@@ -159,9 +150,8 @@ public class StudentService {
         public Student getOneStudent(String id)
         {
             Student st =new Student();
-            StudentService sv =new StudentService();
             String sql = "select * from student where id="+id;
-            ResultSet rs = sv.createQuery(sql);
+            ResultSet rs = createQuery(sql);
             try
             {
                 while(rs.next())
@@ -183,19 +173,13 @@ public class StudentService {
 	{
 		try
 		{
-			StudentService sv = new StudentService();
-			ConnectParam CP = sv.setCP();
-			Connection conn = sv.DBconn(CP);
+			ConnectParam CP = setCP();
+			Connection conn = DBconn(CP);
 			// statement用来执行SQL语句
 			Statement statement = conn.createStatement();
 			// 执行SQL语句
-                        //System.out.println("run here!");
-                        //System.out.println(query);
                         statement.executeUpdate(query);
-                        //conn.close();
-			//statement.executeQuery(query);
-                       
-                        
+                        conn.close();                       
 		}
 		catch(Exception ex)
 		{
@@ -215,6 +199,8 @@ public class StudentService {
                 //sv.update(st);
                 st = sv.getOneStudent("2");
                 System.out.println(st.getUser());
+                Logger logger = Logger.getRootLogger();
+                logger.info("Run into the Service part to get some service!");
 		//ResultSet rs = sv.createQuery("select * from student");
                 //sv.execute("insert into student values('3','kitty','123456');");
                 /*
