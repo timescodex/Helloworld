@@ -1,0 +1,14 @@
+Version 1
+Spring MVC 增删改查Demo
+1.使用传统的Beans 也就是Spring 2.5之前的方式实现多个Beans
+2.使用注解的方式实现
+3.数据库使用Mysql 
+4.日志系统使用log4j
+5.在showstudent.jsp中 将action的“zhujie”去掉则使用的是传统的Bean的方式，对应的controller在com.mvc.controller文件下
+6.不去掉"zhujie"则使用的是注解方式，controller放在com.mvc.controller:TestController 中
+7.log4j配置文件为log4j.properties
+8.使用Entity和Service两层对方法和数据层进行封装。没有使用DAO因为项目较小.
+
+Version 2
+1.使用velocity模板语言。
+2.加入DAO并使用myibatis进行ORM

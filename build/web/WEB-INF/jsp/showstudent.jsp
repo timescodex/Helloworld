@@ -20,11 +20,11 @@
 %>
     <body>
         <h1>show the student data:</h1>
-        <form name="searchform" action="/Helloworld/search.do" method="post">
+        <form name="searchform" action="/Helloworld/zhujie/search.do" method="post">
             <input type="text" placeholder="search content" name="search_sid"/>
             <input type="submit" value="search"/>
         </form>
-        <form name="addform" action="/Helloworld/add.do" method="post">
+        <form name="addform" action="/Helloworld/zhujie/add.do" method="post">
              <input type="submit" value="Add student">
         </form>
         <table>
@@ -45,11 +45,11 @@
    	  <% } %>
        <table>
            
-       <form name="updateform" action="/Helloworld/update.do" method="post">
+       <form name="updateform" action="/Helloworld/zhujie/update.do" method="post">
            update number : <input type="Text" name="sid"/>
            <input type="submit" value="Update">
        </form>
-       <form name="deleteform" action="/Helloworld/delete.do" method="post">
+       <form name="deleteform" action="/Helloworld/zhujie/delete.do" method="post">
            delete number : <input type="Text" name="sid"/>
            <input type="submit" value="Delete">
        </form> 
