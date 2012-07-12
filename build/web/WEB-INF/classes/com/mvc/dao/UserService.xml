@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mvc.dao.UserService">
+	
+	<resultMap id="result" type="student">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="psw" column="psw"/>
+    </resultMap>
+	
+	<select id="getAllStudent" resultMap="result">  
+		SELECT id,name,psw 
+		FROM student; 
+	</select>
+	
+	<insert id="saveStudent" parameterType="student">
+		INSERT INTO student (id,name,psw) 
+    	VALUE (#{id},#{name},#{psw})
+	</insert>
+	
+	<update id="updateStudent" parameterType="student"> 
+  		UPDATE student
+  		SET
+  			name = #{name},  
+			psw = #{psw} 
+  		where id = #{id} 
+	</update>
+	
+	<delete id="deleteStudent" parameterType="int">
+    	DELETE FROM student
+    	WHERE id = #{id}
+    </delete>
+</mapper>
